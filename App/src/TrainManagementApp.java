@@ -5,8 +5,23 @@ import java.util.Set;
 import java.util.LinkedList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Comparator;
 
 
+
+class Bogie {
+    String name;
+    int capacity;
+
+    Bogie(String name, int capacity) {
+        this.name = name;
+        this.capacity = capacity;
+    }
+
+    public String toString() {
+        return name + " (" + capacity + ")";
+    }
+}
 
 public class TrainManagementApp {
 
@@ -84,7 +99,20 @@ public class TrainManagementApp {
             System.out.println(entry.getKey() + " -> " + entry.getValue());
         }
 
+        // ---------------- UC7 ----------------
 
+        ArrayList<Bogie> bogies = new ArrayList<>();
+
+        bogies.add(new Bogie("Sleeper", 72));
+        bogies.add(new Bogie("AC Chair", 50));
+        bogies.add(new Bogie("First Class", 30));
+
+// Sort by capacity
+        bogies.sort(Comparator.comparingInt(b -> b.capacity));
+
+// Display sorted
+        System.out.println("\nSorted Bogies by Capacity:");
+        System.out.println(bogies);
 
 
     }
