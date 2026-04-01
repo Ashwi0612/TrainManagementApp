@@ -3,6 +3,9 @@ import java.util.List;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.LinkedList;
+import java.util.HashMap;
+import java.util.Map;
+
 
 
 public class TrainManagementApp {
@@ -65,6 +68,22 @@ public class TrainManagementApp {
 // Display final list
         System.out.println("\nFinal Train Consist (LinkedList):");
         System.out.println(trainList);
+
+        // ---------------- UC6 ----------------
+
+        HashMap<String, Integer> capacityMap = new HashMap<>();
+
+        capacityMap.put("Sleeper", 72);
+        capacityMap.put("AC Chair", 50);
+        capacityMap.put("First Class", 30);
+
+// Display
+        System.out.println("\nBogie Capacities:");
+
+        for (Map.Entry<String, Integer> entry : capacityMap.entrySet()) {
+            System.out.println(entry.getKey() + " -> " + entry.getValue());
+        }
+
 
 
 
