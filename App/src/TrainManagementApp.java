@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.LinkedList;
 
 
 public class TrainManagementApp {
@@ -42,6 +43,29 @@ public class TrainManagementApp {
 
         System.out.println("\nUnique Bogie IDs:");
         System.out.println(bogieIds);
+
+        // ---------------- UC4 ----------------
+
+        LinkedList<String> trainList = new LinkedList<>();
+
+// Add bogies
+        trainList.add("Engine");
+        trainList.add("Sleeper");
+        trainList.add("AC");
+        trainList.add("Cargo");
+        trainList.add("Guard");
+
+// Insert Pantry Car at position 2
+        trainList.add(2, "Pantry");
+
+// Remove first and last
+        trainList.removeFirst();
+        trainList.removeLast();
+
+// Display final list
+        System.out.println("\nFinal Train Consist (LinkedList):");
+        System.out.println(trainList);
+
 
 
     }
