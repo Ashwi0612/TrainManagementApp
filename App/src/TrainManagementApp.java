@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Comparator;
+import java.util.stream.Collectors;
 
 
 
@@ -113,6 +114,19 @@ public class TrainManagementApp {
 // Display sorted
         System.out.println("\nSorted Bogies by Capacity:");
         System.out.println(bogies);
+
+
+        // ---------------- UC8 ----------------
+
+// Filter bogies with capacity > 60
+        List<Bogie> filteredBogies = bogies.stream()
+                .filter(b -> b.capacity > 60)
+                .collect(Collectors.toList());
+
+// Display filtered bogies
+        System.out.println("\nFiltered Bogies (capacity > 60):");
+        System.out.println(filteredBogies);
+
 
 
     }
