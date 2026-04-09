@@ -2,6 +2,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import java.util.*;
+import java.util.regex.Pattern;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class TrainManagementAppTest {
@@ -82,4 +84,41 @@ class TrainManagementAppTest {
 
         assertEquals(sizeBefore, sizeAfter);
     }
+
+    private boolean isValidTrainId(String id) {
+        return Pattern.matches("TRN-\\d{4}", id);
+    }
+
+    private boolean isValidCargoCode(String code) {
+        return Pattern.matches("PET-[A-Z]{2}", code);
+    }
+    @Test
+    void testRegex_ValidTrainID() {
+        assertTrue(isValidTrainId("TRN-1234"));
+    }
+
+    @Test
+    void testRegex_InvalidTrainIDFormat() {
+        assertFalse(isValidTrainId("TRN12A"));
+        assertFalse(isValidTrainId("1234-TRN"));
+    }
+
+    @Test
+    void testRegex_ValidCargoCode() {
+        assertTrue(isValidCargoCode("PET-AB"));
+    }
+
+    @Test
+    void testRegex_InvalidCargoCodeFormat() {
+        assertFalse(isValidCargoCode("PET-ab"));
+        assertFalse(isValidCargoCode("PET123"));
+    }
+
+    @Test
+    void testRegex_EmptyInputHandling() {
+        assertFalse(isValidTrainId(""));
+        assertFalse(isValidCargoCode(""));
+    }
+
+
 }
