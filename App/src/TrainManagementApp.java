@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Comparator;
 import java.util.stream.Collectors;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 
 
@@ -108,9 +110,9 @@ public class TrainManagementApp {
 
         ArrayList<Bogie> bogies = new ArrayList<>();
 
-        bogies.add(new Bogie("Sleeper", 72));
-        bogies.add(new Bogie("AC Chair", 50));
-        bogies.add(new Bogie("First Class", 30));
+        bogies.add(new Bogie("Sleeper", 72, "passenger"));
+        bogies.add(new Bogie("AC Chair", 50, "passenger"));
+        bogies.add(new Bogie("First Class", 30, "passenger"));
 
 // Sort by capacity
         bogies.sort(Comparator.comparingInt(b -> b.capacity));
@@ -130,6 +132,29 @@ public class TrainManagementApp {
 // Display filtered bogies
         System.out.println("\nFiltered Bogies (capacity > 60):");
         System.out.println(filteredBogies);
+
+        // ---------------- UC11 ----------------
+
+// Sample input
+        String trainId = "TRN-1234";
+        String cargoCode = "PET-AB";
+
+// Define regex patterns
+        Pattern trainPattern = Pattern.compile("TRN-\\d{4}");
+        Pattern cargoPattern = Pattern.compile("PET-[A-Z]{2}");
+
+// Create matcher objects
+        Matcher trainMatcher = trainPattern.matcher(trainId);
+        Matcher cargoMatcher = cargoPattern.matcher(cargoCode);
+
+// Validate inputs
+        boolean isTrainValid = trainMatcher.matches();
+        boolean isCargoValid = cargoMatcher.matches();
+
+// Display results
+        System.out.println("\nTrain ID Validation: " + (isTrainValid ? "Valid" : "Invalid"));
+        System.out.println("Cargo Code Validation: " + (isCargoValid ? "Valid" : "Invalid"));
+
 
 
 
