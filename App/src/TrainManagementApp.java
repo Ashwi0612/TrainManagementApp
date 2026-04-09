@@ -13,16 +13,20 @@ import java.util.stream.Collectors;
 class Bogie {
     String name;
     int capacity;
+    String type;
 
-    Bogie(String name, int capacity) {
+    Bogie(String name, int capacity, String type) {
         this.name = name;
         this.capacity = capacity;
+        this.type = type;
     }
 
+    @Override
     public String toString() {
-        return name + " (" + capacity + ")";
+        return name + " (" + capacity + ", " + type + ")";
     }
 }
+
 
 public class TrainManagementApp {
 
