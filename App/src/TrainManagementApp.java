@@ -6,17 +6,22 @@ import java.util.LinkedList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Comparator;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 
 
 class Bogie {
     String name;
     int capacity;
+    String type;
 
-    Bogie(String name, int capacity) {
+    Bogie(String name, int capacity, String type) {
         this.name = name;
         this.capacity = capacity;
+        this.type = type;
     }
+
 
     public String toString() {
         return name + " (" + capacity + ")";
@@ -113,6 +118,17 @@ public class TrainManagementApp {
 // Display sorted
         System.out.println("\nSorted Bogies by Capacity:");
         System.out.println(bogies);
+
+        // ---------------- UC9 ----------------
+
+// Group bogies by type
+        Map<String, List<Bogie>> groupedBogies = bogies.stream()
+                .collect(Collectors.groupingBy(b -> b.type));
+
+// Display grouped result
+        System.out.println("\nGrouped Bogies by Type:");
+        System.out.println(groupedBogies);
+
 
 
     }
